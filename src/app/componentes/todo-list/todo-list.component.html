@@ -1,0 +1,36 @@
+<div class="max-w-4x1 mx-auto p-6 bg-white rounded-xl shadow-lg">
+    <h1 class="text-4x1 font-bold text-center text-teal-600 mb-6"> Pakee To-Do List</h1>
+  
+    <form (ngSubmit)="addTask()" class="mb-6 flex items-center space-x-4">
+      <input
+        [(ngModel)]="newTask"
+        name="task"
+        type="text"
+        class="w-full p-4 border border-gray-300 rounded-md"
+        placeholder="Agregar nueva tarea"
+        required
+      />
+      <button
+        type="submit"
+        class="p-4 bg-teal-600 text-white rounded-md hover:bg-teal-700"
+      >
+        +
+      </button>
+    </form>
+  
+    <ul class="space-y-4">
+      <li *ngFor="let task of tasks; let i = index" class="flex items-center justify-between p-4 bg-gray-100 rounded-lg shadow-md">
+        <span [class.text-gray-500]="task.completed" class="text-lg">
+          {{ task.text }}
+        </span>
+        <div style="padding-left: 10px;">
+          <button (click)="toogleTask(i)" class="text-teal-600 mr-2">
+            {{ task.completed ? 'Desmarcar' : 'Marcar como hecho' }}
+          </button>
+          <button (click)="deleteTask(i)" class="text-red-600">
+            Eliminar
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>

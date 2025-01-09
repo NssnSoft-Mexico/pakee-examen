@@ -1,0 +1,39 @@
+<div class="text-center">
+  <h1 class="text-2xl font-bold mb-4">Administración</h1>
+
+  <!-- Botón Agregar Usuario -->
+  <div class="flex justify-end mb-4">
+    <button 
+      class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-all"
+      (click)="openAddUserDialog()">
+      Agregar Usuario
+    </button>
+  </div>
+
+  <!-- Tabla de Usuarios -->
+  <nz-table 
+    #basicTable 
+    [nzBordered]="true" 
+    [nzData]="listOfData" 
+    [nzSize]="'middle'" 
+    [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th nzWidth="45%">Nombre</th>
+        <th nzWidth="45%">Correo</th>
+        <th nzWidth="45%">Rol</th>
+        <th nzWidth="45%">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of listOfData">
+        <td>{{ data.nombre }}</td>
+        <td>{{ data.correo }}</td>
+        <td>{{ data.perfil }}</td>
+        <td>
+          <button class="bg-blue-500 text-white px-2 py-1 rounded">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
